@@ -1,0 +1,13 @@
+[ambari-1.x]
+name=Ambari 1.x
+baseurl=http://node1/hdp/ambari-1.x
+gpgcheck=0
+enabled=1
+priority=1
+
+[Updates-ambari-1.4.4.23]
+name=ambari-1.4.4.23 - Updates
+baseurl=http://node1/hdp/Updates-ambari-1.4.4.23
+gpgcheck=0
+enabled=1
+priority=1
