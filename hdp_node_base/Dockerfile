@@ -68,6 +68,7 @@ RUN echo "IdentityFile /root/.ssh/id_rsa" >> /etc/ssh/ssh_config
 RUN mkdir /root/scripts && mkdir /root/conf
 ADD conf/ /root/conf/
 ADD conf/config /etc/selinux/config
+ADD conf/hosts /etc/
 RUN echo "root:hadoop" | chpasswd
 
 EXPOSE 22
