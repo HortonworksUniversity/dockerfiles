@@ -6,7 +6,7 @@
 #	
 #
 #
-FROM centos
+FROM centos:6.4
 
 MAINTAINER Rich Raposa, rich@hortonworks.com
 
@@ -27,6 +27,7 @@ RUN wget -nv http://public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.0.6.
 RUN yum -y install snappy snappy-devel
 RUN yum -y install lzo lzo-devel hadoop-lzo hadoop-lzo-native
 
+
 # Install HDP
 RUN yum -y install --nogpgcheck hadoop hadoop-hdfs hadoop-libhdfs hadoop-yarn hadoop-mapreduce hadoop-client openssl
 RUN yum -y install --nogpgcheck pig hive hcatalog webhcat-tar-hive webhcat-tar-pig oozie oozie-client
@@ -38,7 +39,7 @@ RUN yum -y install --nogpgcheck zookeeper hbase
 RUN yum -y install sqoop
 
 # Install Ganglia client 
-# RUN yum -y install --nogpgcheck ganglia-gmond-3.5.0-99 
+RUN yum -y install --nogpgcheck ganglia-gmond-3.5.0-99 
 
 # Install Tez bits
 RUN wget -nv http://public-repo-1.hortonworks.com/HDP-2.1.0.0/repos/centos6/tars/tez-0.2.0.2.1.0.0-92.tar.gz
@@ -68,7 +69,7 @@ RUN echo "IdentityFile /root/.ssh/id_rsa" >> /etc/ssh/ssh_config
 RUN mkdir /root/scripts && mkdir /root/conf
 ADD conf/ /root/conf/
 ADD conf/config /etc/selinux/config
-ADD conf/hosts /etc/
+
 RUN echo "root:hadoop" | chpasswd
 
 EXPOSE 22

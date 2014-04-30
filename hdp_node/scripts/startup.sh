@@ -11,36 +11,45 @@ source /root/scripts/directories.sh
 /root/scripts/createUsersAndDirectories.sh
 
 # Setup the hosts file and start DNS
-cp /root/conf/0hosts /etc/dnsmasq.d/0hosts
-cp /root/conf/banner_add_hosts /etc/banner_add_hosts
-service dnsmasq restart
+#cp /root/conf/0hosts /etc/dnsmasq.d/0hosts
+#cp /root/conf/banner_add_hosts /etc/banner_add_hosts
+#service dnsmasq restart
+
+umount /etc/hosts
+cp /root/conf/hosts /etc/
+
+# The following link is used by all the Hadoop scripts
+rm /usr/java/default
+mkdir /usr/java/default
+mkdir /usr/java/default/bin/
+ln -s /usr/bin/java /usr/java/default/bin/java
 
 # Fix a bug in HDP 2
 chown root:hadoop /usr/lib/hadoop-yarn/bin/container-executor
 chmod 6050 /usr/lib/hadoop-yarn/bin/container-executor 
 
-if [ "$NODE_TYPE" == "namenode" ] ; then
-	export namenode_ip=$(ip addr | grep inet | grep eth0 | awk -F" " '{print $2}' | sed -e 's/\/.*$//')
-	/root/scripts/add_host.sh $namenode_ip "namenode"
+#if [ "$NODE_TYPE" == "namenode" ] ; then
+#	export namenode_ip=$(ip addr | grep inet | grep eth0 | awk -F" " '{print $2}' | sed -e 's/\/.*$//')
+#	/root/scripts/add_host.sh $namenode_ip "namenode"
 #        rm -rf /etc/hadoop/conf/slaves
 #	touch /etc/hadoop/conf/slaves
 #	ifconfig
-elif [ "$NODE_TYPE" == "resourcemanager" ] || [ "$NODE_TYPE" == "secondarynamenode" ] || [ "$NODE_TYPE" == "hiveserver" ]  || [ "$NODE_TYPE" == "hiveserver-tez" ] ; then
-	export newnode_ip=$(ip addr | grep inet | grep eth0 | awk -F" " '{print $2}' | sed -e 's/\/.*$//')
+#elif [ "$NODE_TYPE" == "resourcemanager" ] || [ "$NODE_TYPE" == "secondarynamenode" ] || [ "$NODE_TYPE" == "hiveserver" ]  || [ "$NODE_TYPE" == "hiveserver-tez" ] ; then
+#	export newnode_ip=$(ip addr | grep inet | grep eth0 | awk -F" " '{print $2}' | sed -e 's/\/.*$//')
 	# Add the new IP to DNS files
-	echo "New node ip = $newnode_ip and NameNode ip = $namenode_ip"
+#	echo "New node ip = $newnode_ip and NameNode ip = $namenode_ip"
 	#ssh -o StrictHostKeyChecking=no root@$namenode_ip "/root/scripts/add_host.sh $newnode_ip $(hostname)"
         #ssh -o StrictHostKeyChecking=no root@$namenode_ip "/root/scripts/copy_dns.sh"
 
-elif [ "$NODE_TYPE" == "workernode" ] ; then
-	export datanode_ip=$(ip addr | grep inet | grep eth0 | awk -F" " '{print $2}' | sed -e 's/\/.*$//')
+#elif [ "$NODE_TYPE" == "workernode" ] ; then
+#	export datanode_ip=$(ip addr | grep inet | grep eth0 | awk -F" " '{print $2}' | sed -e 's/\/.*$//')
 
 	# We need passwordless ssh, which this command gives us
 	# Kill two birds w/ one stone: we also add the datanode IP address to the DNS on the NN 
-	echo "WorkerNode ip = $datanode_ip and NameNode ip = $namenode_ip"
+#	echo "WorkerNode ip = $datanode_ip and NameNode ip = $namenode_ip"
         #ssh -o StrictHostKeyChecking=no root@$namenode_ip "/root/scripts/add_host.sh $datanode_ip $(hostname)"
 	#ssh -o StrictHostKeyChecking=no root@$namenode_ip "/root/scripts/copy_dns.sh"
-fi
+#fi
 
 if [ "$NODE_TYPE" == "namenode" ] ; then
         echo "Starting NameNode..."
