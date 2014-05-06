@@ -110,8 +110,10 @@ do
 done
 #Add libraries required by nodemanager
 MAPREDUCE_LIBS=/usr/lib/hadoop-mapreduce/*
-TEZ_LIBS=/opt/tez-0.2.0.2.1.0.0-92/*:/opt/tez-0.2.0.2.1.0.0-92/lib/*
-export HADOOP_CLASSPATH=${HADOOP_CLASSPATH}${JAVA_JDBC_LIBS}:${MAPREDUCE_LIBS}:${TEZ_LIBS}
+export HADOOP_CLASSPATH=/etc/tez/conf:/opt${HADOOP_CLASSPATH}${JAVA_JDBC_LIBS}:${MAPREDUCE_LIBS}:${TEZ_LIBS}
+if [ -d "/usr/lib/tez" ]; then
+  export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:/usr/lib/tez/*:/usr/lib/tez/lib/*:/etc/tez/conf
+fi
 
 # Setting path to hdfs command line
 export HADOOP_LIBEXEC_DIR=/usr/lib/hadoop/libexec

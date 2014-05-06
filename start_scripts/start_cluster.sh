@@ -20,18 +20,17 @@ CID_resourcemanager=$(docker run -d --privileged --link namenode:namenode -e nam
 IP_resourcemanager=$(docker inspect --format "{{ .NetworkSettings.IPAddress }}" resourcemanager)
 echo "ResourceManager running on $IP_resourcemanager"
 
+#Start the Hive/Oozie Server
+echo "Starting a Hive/Oozie server..."
+CID_hive=$(docker run -d --privileged --link namenode:namenode -e namenode_ip=$IP_namenode -e NODE_TYPE=hiveserver --dns 127.0.0.1 -p 50075 -p 50010 -p 50020 -p 8010 -p 45454 -p 11000:11000 -p 2181 -p 50111:50111 -p 9083 -p 10000 -p 9999:9999 -p 9933:9933 -p 22  --name hiveserver -h hiveserver -i -t $1 bash)
+IP_hive=$(docker inspect --format "{{ .NetworkSettings.IPAddress }}" hiveserver)
+echo "Hive/Oozie running on $IP_hive"
+
 #Start the SecondaryNameNode
 #echo "Starting SecondaryNameNode..."
 #CID_snn=$(docker run -d --link namenode:namenode -e namenode_ip=$IP_namenode --dns 127.0.0.1 -p 50090:50090 -p 22  -e NODE_TYPE=secondarynamenode --name secondarynamenode -h secondarynamenode -i -t $1)
 #IP_snn=$(docker inspect --format "{{ .NetworkSettings.IPAddress }}" secondarynamenode)
 #echo "SecondaryNameNode running $IP_ssn"
-
-#Start the Hive/Oozie Server
-echo "Starting a Hive/Oozie server..."
-CID_hive=$(docker run -d --privileged --link namenode:namenode -e namenode_ip=$IP_namenode -e NODE_TYPE=hiveserver --dns 127.0.0.1 -p 11000:11000 -p 2181 -p 50111:50111 -p 9083 -p 10000 -p 9999:9999 -p 9933:9933 -p 22  --name hiveserver -h hiveserver -i -t $1 bash)
-IP_hive=$(docker inspect --format "{{ .NetworkSettings.IPAddress }}" hiveserver)
-echo "Hive/Oozie running on $IP_hive"
-
 
 #Start the WorkerNodes
 echo "Starting $2 WorkerNodes..."

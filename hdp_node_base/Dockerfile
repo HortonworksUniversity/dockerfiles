@@ -21,33 +21,24 @@ RUN yum -y install java-1.7.0-openjdk java-1.7.0-openjdk-devel \
 ENV JAVA_HOME /usr/java/default
 
 # Configure the HDP Repository
-RUN wget -nv http://public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.0.6.1/hdp.repo -O /etc/yum.repos.d/hdp.repo
+RUN wget -nv http://public-repo-1.hortonworks.com/HDP/centos6/2.x/GA/2.1.1.0/hdp.repo -O /etc/yum.repos.d/hdp.repo
 
 # Install compression libraries
 RUN yum -y install snappy snappy-devel
 RUN yum -y install lzo lzo-devel hadoop-lzo hadoop-lzo-native
 
-
 # Install HDP
 RUN yum -y install --nogpgcheck hadoop hadoop-hdfs hadoop-libhdfs hadoop-yarn hadoop-mapreduce hadoop-client openssl
-RUN yum -y install --nogpgcheck pig hive hcatalog webhcat-tar-hive webhcat-tar-pig oozie oozie-client
+RUN yum -y install --nogpgcheck pig hive hive-hcatalog webhcat-tar-hive webhcat-tar-pig oozie oozie-client tez mahout storm falcon knox hue
 
 # Install HBase
-RUN yum -y install --nogpgcheck zookeeper hbase
+RUN yum -y install --nogpgcheck zookeeper hbase phoenix
 
 # Install Sqoop
 RUN yum -y install sqoop
 
 # Install Ganglia client 
 RUN yum -y install --nogpgcheck ganglia-gmond-3.5.0-99 
-
-# Install Tez bits
-RUN wget -nv http://public-repo-1.hortonworks.com/HDP-2.1.0.0/repos/centos6/tars/tez-0.2.0.2.1.0.0-92.tar.gz
-RUN tar -C /opt -xzf tez-0.2.0.2.1.0.0-92.tar.gz
-RUN wget -nv http://public-repo-1.hortonworks.com/HDP-2.1.0.0/repos/centos6/tars/apache-hive-0.13.0.2.1.0.0-92-bin.tar.gz
-RUN tar -C /opt -xzf apache-hive-0.13.0.2.1.0.0-92-bin.tar.gz
-RUN wget -nv http://public-repo-1.hortonworks.com/HDP-2.1.0.0/repos/centos6/hdp.repo -O /etc/yum.repos.d/stinger.repo
-RUN yum upgrade hadoop-yarn-resourcemanager
 
 # Configure passwordless SSH amongst the nodes
 RUN touch /etc/sysconfig/network 

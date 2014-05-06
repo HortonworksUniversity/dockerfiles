@@ -12,6 +12,7 @@ useradd $PIG_USER -g $HADOOP_GROUP
 #useradd $HBASE_USER -g $HADOOP_GROUP
 #useradd $ZOOKEEPER_USER -g $HADOOP_GROUP
 #useradd $OOZIE_USER -g $HADOOP_GROUP
+#useradd $TEZ_USER -g $HADOOP_GROUP
 
 # Make root an HDFS superuser
 usermod -a -G hdfs root
@@ -68,6 +69,8 @@ mkdir -p $HBASE_PID_DIR && chown -R $HBASE_USER:$HADOOP_GROUP $HBASE_PID_DIR && 
 
 mkdir -p $SQOOP_CONF_DIR && chown -R $HDFS_USER:$HADOOP_GROUP $SQOOP_CONF_DIR && chmod -R 755 $SQOOP_CONF_DIR
 
+mkdir -p $TEZ_CONF_DIR && chown -R $TEZ_USER:$HADOOP_GROUP $TEZ_CONF_DIR && chmod -R 755 $TEZ_CONF_DIR
+
 # Copy config files
 cp /root/configuration_files/core_hadoop/* /etc/hadoop/conf/
 cp /root/configuration_files/hbase/* /etc/hbase/conf/
@@ -77,7 +80,7 @@ cp /root/configuration_files/hive/* /etc/hive/conf/
 cp /root/configuration_files/oozie/* /etc/oozie/conf/
 cp /root/configuration_files/sqoop/* /etc/sqoop/conf/
 cp /root/configuration_files/zookeeper/* /etc/zookeeper/conf/
-cp /root/configuration_files/tez/* /etc/hadoop/conf
+cp /root/configuration_files/tez/* /etc/tez/conf
 cp /root/configuration_files/stinger/hive-site.xml /opt/apache-hive*/conf
 
 # Remove overlapping SLF4J logging providers

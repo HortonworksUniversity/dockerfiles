@@ -41,24 +41,17 @@ elif [ "$NODE_TYPE" == "resourcemanager" ] ; then
 	sudo -E -u yarn /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh --config /etc/hadoop/conf start resourcemanager
 	sudo -E -u mapred /usr/lib/hadoop-mapreduce/sbin/mr-jobhistory-daemon.sh --config /etc/hadoop/conf start historyserver
 	bash
-elif [[ ("$NODE_TYPE" == "hiveserver") || ("$NODE_TYPE" == "hiveserver-tez") ]] ; then
+elif [[ ("$NODE_TYPE" == "hiveserver") ]]; then
         echo "Starting Hive and Oozie..."
+        sudo -E -u hdfs /usr/lib/hadoop/sbin/hadoop-daemon.sh start datanode
+        export HADOOP_LIBEXEC_DIR=/usr/lib/hadoop/libexec
+        sudo -E -u yarn /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh --config /etc/hadoop/conf start nodemanager
+	sleep 5
 	/usr/lib/zookeeper/bin/zkServer.sh start
         export hiveserver_ip=$(ip addr | grep inet | grep eth0 | awk -F" " '{print $2}' | sed -e 's/\/.*$//')
-        if [ "$NODE_TYPE" == "hiveserver-tez" ] ; then
-                source /root/configuration_files/stinger/stinger-env.sh
-		cat /root/configuration_files/stinger/stinger-env.sh >> /etc/bashrc
-		sudo -u hdfs hadoop fs -put -f /opt/apache-hive-0.13*-bin/lib/hive-exec-*.jar /user/hive/hive-exec-0.13.0-SNAPSHOT.jar
-		sudo -E -u hdfs hadoop fs -put -f /opt/tez-0.2.0.2.1.0.0-92/* /apps/tez
-        fi
-	# Start Metastore and Hiveserver2
-        if [ "$NODE_TYPE" == "hiveserver-tez" ] ; then
-          sudo -E -u hive /opt/apache-hive-0.13*-bin/bin/hive --service metastore &
-	  sudo -E -u hive /opt/apache-hive-0.13*-bin/bin/hiveserver2 &
-        else
-          sudo -E -u hive hive --service metastore &
-  	  sudo -E -u hive /usr/lib/hive/bin/hiveserver2 &
-        fi
+	sudo -E -u hdfs hadoop fs -put -f /usr/lib/tez/* /apps/tez
+        sudo -E -u hive hive --service metastore &
+  	sudo -E -u hive /usr/lib/hive/bin/hiveserver2 &
 	# Start WebHCat server
 	sudo -E -u hcat /etc/hcatalog/conf/webhcat/webhcat-env.sh && env HADOOP_HOME=/usr/lib/hadoop /usr/lib/hcatalog/sbin/webhcat_server.sh start	
 	# Start oozie

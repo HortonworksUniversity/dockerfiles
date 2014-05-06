@@ -4,7 +4,7 @@
 
 172.17.0.2	namenode
 172.17.0.3	resourcemanager
-172.17.0.4	secondarynamenode
+172.17.0.4	hiveserver
 172.17.0.5	toolserver
 172.17.0.6	node1
 172.17.0.7	node2

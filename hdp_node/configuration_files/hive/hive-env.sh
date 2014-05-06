@@ -1,3 +1,4 @@
+
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements. See the NOTICE file
 # distributed with this work for additional information
@@ -35,8 +36,9 @@
  fi
 
 # The heap size of the jvm stared by hive shell script can be controlled via:
-HBASE_CONF_DIR=${HBASE_CONF_DIR:-/etc/hbase/conf}
-export HADOOP_HEAPSIZE=${HADOOP_HEAPSIZE:-1024}
+
+export HADOOP_HEAPSIZE="1024"
+export HADOOP_CLIENT_OPTS="-Xmx${HADOOP_HEAPSIZE}m $HADOOP_CLIENT_OPTS"
 
 # Larger heap size may be required when running queries over large number of files or partitions.
 # By default hive shell scripts use a heap size of 256 (MB).  Larger heap size would also be
@@ -48,6 +50,12 @@ HADOOP_HOME=${HADOOP_HOME:-/usr}
 
 # Hive Configuration Directory can be controlled by:
 export HIVE_CONF_DIR=/etc/hive/conf
-export JAVA_HOME=/usr/java/default
+
 # Folder containing extra ibraries required for hive compilation/execution can be controlled by:
-export HIVE_AUX_JARS_PATH=${HIVE_AUX_JARS_PATH:-/usr/lib/hcatalog/share/hcatalog/hcatalog-core.jar}
+if [ "${HIVE_AUX_JARS_PATH}" != "" ]; then
+  export HIVE_AUX_JARS_PATH=${HIVE_AUX_JARS_PATH}
+elif [ -d "/usr/lib/hive-hcatalog/" ]; then
+  export HIVE_AUX_JARS_PATH=/usr/lib/hive-hcatalog/share/hcatalog/hive-hcatalog-core-*.jar
+else
+  export HIVE_AUX_JARS_PATH=/usr/lib/hcatalog/share/hcatalog/hcatalog-core.jar
+fi
