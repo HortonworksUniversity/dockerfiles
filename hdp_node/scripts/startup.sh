@@ -39,6 +39,7 @@ elif [ "$NODE_TYPE" == "resourcemanager" ] ; then
 	# Start the resourcemanager and historyserver
 	export HADOOP_LIBEXEC_DIR=/usr/lib/hadoop/libexec
 	sudo -E -u yarn /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh --config /etc/hadoop/conf start resourcemanager
+        sudo -E -u yarn /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh --config /etc/hadoop/conf start historyserver
 	sudo -E -u mapred /usr/lib/hadoop-mapreduce/sbin/mr-jobhistory-daemon.sh --config /etc/hadoop/conf start historyserver
 	bash
 elif [[ ("$NODE_TYPE" == "hiveserver") ]]; then
