@@ -1,1 +1,1 @@
-docker ps | awk '{print $1}' | xargs docker kill
+docker ps | awk '{print $1}' | grep -v CONTAINER | xargs docker kill

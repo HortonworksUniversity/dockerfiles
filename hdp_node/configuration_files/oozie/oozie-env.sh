@@ -1,3 +1,4 @@
+
 #!/bin/bash
 #
 # Licensed to the Apache Software Foundation (ASF) under one
@@ -17,8 +18,17 @@
 # limitations under the License.
 #
 
+if [ -d "/usr/lib/bigtop-tomcat" ]; then
+  export OOZIE_CONFIG=${OOZIE_CONFIG:-/etc/oozie/conf}
+  export CATALINA_BASE=${CATALINA_BASE:-/var/lib/oozie/oozie-server}
+  export CATALINA_TMPDIR=${CATALINA_TMPDIR:-/var/tmp/oozie}
+  export OOZIE_CATALINA_HOME=/usr/lib/bigtop-tomcat
+fi
+
 #Set JAVA HOME
-#export JAVA_HOME=/usr/jdk/jdk1.6.0_31
+export JAVA_HOME=/usr/java/default
+
+export JRE_HOME=${JAVA_HOME}
 
 # Set Oozie specific environment variables here.
 
@@ -40,7 +50,7 @@ export OOZIE_LOG=/var/log/oozie
 export CATALINA_PID=/var/run/oozie/oozie.pid
 
 #Location of the data for oozie
-export OOZIE_DATA=/hadoop/oozie/data/
+export OOZIE_DATA=/hadoop/oozie/data
 
 # Oozie Log4J configuration file to load from Oozie configuration directory
 #
