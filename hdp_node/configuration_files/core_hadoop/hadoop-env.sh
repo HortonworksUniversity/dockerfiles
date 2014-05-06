@@ -110,7 +110,7 @@ do
 done
 #Add libraries required by nodemanager
 MAPREDUCE_LIBS=/usr/lib/hadoop-mapreduce/*
-export HADOOP_CLASSPATH=/etc/tez/conf:/opt${HADOOP_CLASSPATH}${JAVA_JDBC_LIBS}:${MAPREDUCE_LIBS}:${TEZ_LIBS}
+export HADOOP_CLASSPATH=${HADOOP_CLASSPATH}${JAVA_JDBC_LIBS}:${MAPREDUCE_LIBS}
 if [ -d "/usr/lib/tez" ]; then
   export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:/usr/lib/tez/*:/usr/lib/tez/lib/*:/etc/tez/conf
 fi
