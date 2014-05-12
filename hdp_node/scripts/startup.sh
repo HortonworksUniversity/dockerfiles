@@ -44,10 +44,13 @@ elif [ "$NODE_TYPE" == "resourcemanager" ] ; then
 	bash
 elif [[ ("$NODE_TYPE" == "hiveserver") ]]; then
         echo "Starting Hive and Oozie..."
-        sudo -E -u hdfs /usr/lib/hadoop/sbin/hadoop-daemon.sh start datanode
+#        sudo -E -u hdfs /usr/lib/hadoop/sbin/hadoop-daemon.sh start datanode
         export HADOOP_LIBEXEC_DIR=/usr/lib/hadoop/libexec
-        sudo -E -u yarn /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh --config /etc/hadoop/conf start nodemanager
-	sleep 5
+#        sudo -E -u yarn /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh --config /etc/hadoop/conf start nodemanager
+#	sleep 5
+
+	# We need at least one DataNode up and running, so the following sleep should take care of this
+	sleep 20
 	/usr/lib/zookeeper/bin/zkServer.sh start
         export hiveserver_ip=$(ip addr | grep inet | grep eth0 | awk -F" " '{print $2}' | sed -e 's/\/.*$//')
 	sudo -E -u hdfs hadoop fs -put -f /usr/lib/tez/* /apps/tez
