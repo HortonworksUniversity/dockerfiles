@@ -18,6 +18,8 @@ RUN rm -rf /etc/profile.d/colorls.csh
 RUN mkdir /root/configuration_files/
 ADD configuration_files/ /root/configuration_files/
 
+RUN echo "source /etc/bashrc" >> /root/.bash_profile
+
 EXPOSE 8010 8020 9000 50070 8088 8032 50060 9000 50075 50010 50020 50060 50090 10000 9999 9933 8081 8030 8050 8025 8141 19888 45454 10020 2181 50111 9083 11000 
 
 ENTRYPOINT ["/root/scripts/startup.sh"]
