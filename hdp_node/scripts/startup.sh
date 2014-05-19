@@ -14,9 +14,11 @@ source /root/scripts/directories.sh
 umount /etc/hosts
 cp /root/conf/hosts /etc/
 
-# Replace /etc/resolv.conf
+# Configre /etc/resolv.conf so the nodes have internet access
 umount /etc/resolv.conf
-cp /root/conf/resolv.conf 
+rm /etc/resolv.conf
+touch /etc/resolv.conf
+echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 
 # The following link is used by all the Hadoop scripts
 rm /usr/java/default
