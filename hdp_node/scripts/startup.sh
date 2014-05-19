@@ -35,11 +35,11 @@ if [ "$NODE_TYPE" == "namenode" ] ; then
         sudo -E -u hdfs /usr/lib/hadoop/bin/hadoop namenode -format -nonInteractive
         sudo -E -u hdfs /usr/lib/hadoop/sbin/hadoop-daemon.sh start namenode
 	/root/scripts/createHDFSdirectories.sh
-	bash
+	bash -l
 elif [ "$NODE_TYPE" == "secondarynamenode" ] ; then
         echo "Starting SecondaryNameNode..."
 	sudo -E -u hdfs /usr/lib/hadoop/sbin/hadoop-daemon.sh start secondarynamenode
-	bash
+	bash -l
 elif [ "$NODE_TYPE" == "resourcemanager" ] ; then
         echo "Starting ResourceManager..."
 
@@ -48,7 +48,7 @@ elif [ "$NODE_TYPE" == "resourcemanager" ] ; then
 	sudo -E -u yarn /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh --config /etc/hadoop/conf start resourcemanager
         sudo -E -u yarn /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh --config /etc/hadoop/conf start historyserver
 	sudo -E -u mapred /usr/lib/hadoop-mapreduce/sbin/mr-jobhistory-daemon.sh --config /etc/hadoop/conf start historyserver
-	bash
+	bash -l
 elif [[ ("$NODE_TYPE" == "hiveserver") ]]; then
         echo "Starting Hive and Oozie..."
 #        sudo -E -u hdfs /usr/lib/hadoop/sbin/hadoop-daemon.sh start datanode
@@ -69,14 +69,14 @@ elif [[ ("$NODE_TYPE" == "hiveserver") ]]; then
 	sudo -E -u oozie /etc/oozie/conf/oozie-env.sh && /usr/lib/oozie/bin/oozie-setup.sh prepare-war
 	sudo -E -u oozie /etc/oozie/conf/oozie-env.sh &&  /usr/lib/oozie/bin/ooziedb.sh create -sqlfile oozie.sql -run Validate DB Connection
 	sudo -E -u oozie /etc/oozie/conf/oozie-env.sh && /usr/lib/oozie/bin/oozied.sh start
-	bash
+	bash -l
 elif [ "$NODE_TYPE" == "workernode" ] ; then
         echo "Starting Worker Node..."
 	# Start datanode and nodemanagaer daemons 
 	sudo -E -u hdfs /usr/lib/hadoop/sbin/hadoop-daemon.sh start datanode
         export HADOOP_LIBEXEC_DIR=/usr/lib/hadoop/libexec
 	sudo -E -u yarn /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh --config /etc/hadoop/conf start nodemanager
-	bash
+	bash -l
 else
-        bash
+        bash -l
 fi
