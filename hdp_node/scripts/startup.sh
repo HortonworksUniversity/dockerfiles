@@ -10,8 +10,13 @@ source /root/scripts/usersAndGroups.sh
 source /root/scripts/directories.sh
 /root/scripts/createUsersAndDirectories.sh
 
+# Replace /etc/hosts file
 umount /etc/hosts
 cp /root/conf/hosts /etc/
+
+# Replace /etc/resolv.conf
+umount /etc/resolv.conf
+cp /root/conf/resolv.conf 
 
 # The following link is used by all the Hadoop scripts
 rm /usr/java/default
