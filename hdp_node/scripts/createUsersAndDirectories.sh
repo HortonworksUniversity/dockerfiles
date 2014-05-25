@@ -8,11 +8,11 @@ source /root/scripts/directories.sh
 #useradd $MAPRED_USER -g $HADOOP_GROUP
 useradd $PIG_USER -g $HADOOP_GROUP
 #useradd $HIVE_USER -g $HADOOP_GROUP
-#useradd $WEBHCAT_USER -g $HADOOP_GROUP
+useradd $WEBHCAT_USER -g $HADOOP_GROUP
 #useradd $HBASE_USER -g $HADOOP_GROUP
 #useradd $ZOOKEEPER_USER -g $HADOOP_GROUP
 #useradd $OOZIE_USER -g $HADOOP_GROUP
-#useradd $TEZ_USER -g $HADOOP_GROUP
+useradd $TEZ_USER -g $HADOOP_GROUP
 
 # Make root an HDFS superuser
 usermod -a -G hdfs root
@@ -81,7 +81,6 @@ cp /root/configuration_files/oozie/* /etc/oozie/conf/
 cp /root/configuration_files/sqoop/* /etc/sqoop/conf/
 cp /root/configuration_files/zookeeper/* /etc/zookeeper/conf/
 cp /root/configuration_files/tez/* /etc/tez/conf
-cp /root/configuration_files/stinger/hive-site.xml /opt/apache-hive*/conf
 
 # Remove overlapping SLF4J logging providers
 rm -f /usr/lib/hive/lib/slf4j-log4j12-1.7.5.jar
