@@ -81,6 +81,7 @@ cp /root/configuration_files/oozie/* /etc/oozie/conf/
 cp /root/configuration_files/sqoop/* /etc/sqoop/conf/
 cp /root/configuration_files/zookeeper/* /etc/zookeeper/conf/
 cp /root/configuration_files/tez/* /etc/tez/conf
+cp /root/configuration_files/nano/nanorc /root/.nanorc
 
 # Remove overlapping SLF4J logging providers
 rm -f /usr/lib/hive/lib/slf4j-log4j12-1.7.5.jar

@@ -4,6 +4,9 @@
 FROM hwx/hdp_node_base
 MAINTAINER Rich Raposa, rich@hortonworks.com
 
+# Install nano and vim text editors
+RUN yum -y install nano vim
+
 # sudo is needed to run the Hadoop binaries
 RUN yum -y install sudo bind-utils zip
 
