@@ -16,9 +16,10 @@ elif [[ $2 == "skip-images" ]]; then
   echo "NOTE: Skipping Docker image file updates..."
 fi
 
-REPO_DIR=$1
+export REPO_DIR=$1
 #Determine the course directory, which is the first part of the REPO_DIR up until the underscore character
 COURSE_DIR=${REPO_DIR%%_*}
+export COURSE_DIR=`echo $COURSE_DIR | tr '[:upper:]' '[:lower:]'`
 mkdir /root/$COURSE_DIR
 echo -e "Course files being copied to /root/$COURSE_DIR"
 
