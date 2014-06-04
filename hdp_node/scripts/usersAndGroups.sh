@@ -34,5 +34,9 @@ OOZIE_USER=oozie
 # User which will own the Tez services.
 TEZ_USER=tez
 
+# User which will own the Storm services.
+STORM_USER=storm
+STORM_GROUP=storm
+
 # A common group shared by services.
 HADOOP_GROUP=hadoop ;
