@@ -1,7 +1,7 @@
 #
 #
 #
-FROM hwx/hdp_node_base
+FROM hwxu/hdp_node_base
 MAINTAINER Rich Raposa, rich@hortonworks.com
 
 # Install nano and vim text editors
