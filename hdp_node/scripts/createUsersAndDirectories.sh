@@ -13,11 +13,11 @@ useradd $WEBHCAT_USER -g $HADOOP_GROUP
 #useradd $ZOOKEEPER_USER -g $HADOOP_GROUP
 #useradd $OOZIE_USER -g $HADOOP_GROUP
 useradd $TEZ_USER -g $HADOOP_GROUP
+useradd $STORM_USER -g $STORM_GROUP
 
 # Make root an HDFS superuser
 usermod -a -G hdfs root
 usermod -a -G hadoop root
-
 usermod -a -G hdfs mapred
 
 
@@ -71,6 +71,8 @@ mkdir -p $SQOOP_CONF_DIR && chown -R $HDFS_USER:$HADOOP_GROUP $SQOOP_CONF_DIR &&
 
 mkdir -p $TEZ_CONF_DIR && chown -R $TEZ_USER:$HADOOP_GROUP $TEZ_CONF_DIR && chmod -R 755 $TEZ_CONF_DIR
 
+mkdir -p $STORM_LOCAL_DIR && chown -R $STORM_USER:$STORM_GROUP $STORM_LOCAL_DIR && chmod -R 755 $STORM_LOCAL_DIR
+
 # Copy config files
 cp /root/configuration_files/core_hadoop/* /etc/hadoop/conf/
 cp /root/configuration_files/hbase/* /etc/hbase/conf/
@@ -85,5 +87,4 @@ cp /root/configuration_files/nano/nanorc /root/.nanorc
 
 # Remove overlapping SLF4J logging providers
 rm -f /usr/lib/hive/lib/slf4j-log4j12-1.7.5.jar
-rm -f /usr/lib/zookeeper/lib/slf4j-log4j12-1.6.1.jar
 
