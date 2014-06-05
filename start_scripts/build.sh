@@ -20,7 +20,7 @@ export REPO_DIR=$1
 #Determine the course directory, which is the first part of the REPO_DIR up until the underscore character
 COURSE_DIR=${REPO_DIR%%_*}
 export COURSE_DIR=`echo $COURSE_DIR | tr '[:upper:]' '[:lower:]'`
-mkdir /root/$COURSE_DIR
+mkdir -p /root/$COURSE_DIR
 echo -e "Course files being copied to /root/$COURSE_DIR"
 
 cd /root/$REPO_DIR
@@ -74,7 +74,7 @@ cp /root/$REPO_DIR/scripts/* /root/scripts/
 cp /root/dockerfiles/hdp_node/configuration_files/core_hadoop/* /etc/hadoop/conf/
 
 #Copy lab files
-mkdir /root/$COURSE_DIR/labs
+mkdir -p /root/$COURSE_DIR/labs
 cp -r /root/$REPO_DIR/labs/*  /root/$COURSE_DIR/labs/
 
 #Replace /etc/hosts with one that contains the Docker server names
