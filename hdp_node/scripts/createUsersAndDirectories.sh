@@ -15,11 +15,11 @@ useradd $WEBHCAT_USER -g $HADOOP_GROUP
 useradd $TEZ_USER -g $HADOOP_GROUP
 useradd $STORM_USER -g $STORM_GROUP
 
-# Make root an HDFS superuser
 usermod -a -G hdfs root
 usermod -a -G hadoop root
 usermod -a -G hdfs mapred
-usermod -a -G hdfs storm
+usermod -a -G hdfs $STORM_USER
+usermod -a -G hadoop $STORM_USER
 
 mkdir -p $DFS_NAME_DIR  && chown -R $HDFS_USER:$HADOOP_GROUP $DFS_NAME_DIR && chmod -R 755 $DFS_NAME_DIR 
 mkdir -p $HADOOP_CONF_DIR  && chown -R $HDFS_USER:$HADOOP_GROUP $HADOOP_CONF_DIR && chmod -R 755 $HADOOP_CONF_DIR
