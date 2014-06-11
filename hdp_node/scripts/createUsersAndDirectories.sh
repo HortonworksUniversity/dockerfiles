@@ -19,7 +19,7 @@ useradd $STORM_USER -g $STORM_GROUP
 usermod -a -G hdfs root
 usermod -a -G hadoop root
 usermod -a -G hdfs mapred
-
+usermod -a -G hdfs storm
 
 mkdir -p $DFS_NAME_DIR  && chown -R $HDFS_USER:$HADOOP_GROUP $DFS_NAME_DIR && chmod -R 755 $DFS_NAME_DIR 
 mkdir -p $HADOOP_CONF_DIR  && chown -R $HDFS_USER:$HADOOP_GROUP $HADOOP_CONF_DIR && chmod -R 755 $HADOOP_CONF_DIR
