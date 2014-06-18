@@ -117,3 +117,5 @@ fi
 
 # Setting path to hdfs command line
 export HADOOP_LIBEXEC_DIR=/usr/lib/hadoop/libexec
+
+export JAVA_LIBRARY_PATH=${JAVA_LIBRARY_PATH}:/usr/lib/hadoop/lib/native/:/usr/lib/hadoop/lib/native/Linux-amd64-64/

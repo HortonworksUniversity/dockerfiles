@@ -152,4 +152,8 @@
     <name>mapred.userlog.retain.hours</name>
     <value>24</value>
   </property>
+    <property>
+    <name>mapreduce.admin.user.env</name>
+    <value>LD_LIBRARY_PATH=/usr/lib/hadoop/lib/native:/usr/lib/hadoop/lib/native/`$JAVA_HOME/bin/java -d32 -version &amp;&gt; /dev/null;if [ $? -eq 0 ]; then echo Linux-i386-32; else echo Linux-amd64-64;fi`</value>
+  </property>
   </configuration>
