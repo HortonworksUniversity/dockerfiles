@@ -54,9 +54,10 @@ elif [[ ("$NODE_TYPE" == "hiveserver") ]]; then
 	# Start WebHCat server
 	sudo -E -u hcat /etc/hcatalog/conf/webhcat/webhcat-env.sh && env HADOOP_HOME=/usr/lib/hadoop /usr/lib/hcatalog/sbin/webhcat_server.sh start	
 	# Start oozie
-	sudo -E -u oozie /etc/oozie/conf/oozie-env.sh && /usr/lib/oozie/bin/oozie-setup.sh prepare-war
-	sudo -E -u oozie /etc/oozie/conf/oozie-env.sh &&  /usr/lib/oozie/bin/ooziedb.sh create -sqlfile oozie.sql -run Validate DB Connection
-	sudo -E -u oozie /etc/oozie/conf/oozie-env.sh && /usr/lib/oozie/bin/oozied.sh start
+	sudo -E -u oozie /usr/lib/oozie/bin/oozie-setup.sh prepare-war
+	sudo -E -u oozie /usr/lib/oozie/bin/ooziedb.sh create -run Validate DB Connection
+	sudo -E -u oozie /usr/lib/oozie/bin/oozie-setup.sh sharelib create -fs hdfs://namenode:8020
+	sudo -E -u oozie /usr/lib/oozie/bin/oozied.sh start
 elif [ "$NODE_TYPE" == "workernode" ] ; then
         echo "Starting Worker Node..."
 	# Start datanode and nodemanagaer daemons 

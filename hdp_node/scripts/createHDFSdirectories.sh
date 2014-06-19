@@ -42,4 +42,8 @@ fs -chmod -R 755 /apps/webhcat;
 fs -mkdir -p /apps/tez
 fs -chmod 755 /apps/tez
 
+-- Create Oozie folder
+fs -mkdir /user/oozie
+fs -chown oozie:oozie /user/oozie
+
 DONE

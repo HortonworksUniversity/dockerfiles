@@ -14,7 +14,11 @@
   </property>
     <property>
     <name>hadoop.proxyuser.oozie.groups</name>
-    <value>users</value>
+    <value>*</value>
+  </property>
+    <property>
+    <name>hadoop.proxyuser.oozie.hosts</name>
+    <value>*</value>
   </property>
     <property>
     <name>fs.checkpoint.edits.dir</name>
