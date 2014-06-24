@@ -71,6 +71,7 @@ echo "Copying utility scripts..."
 cp /root/dockerfiles/start_scripts/* /root/scripts/
 cp /root/$REPO_DIR/scripts/* /root/scripts/
 
+echo "Copying config files..."
 cp /root/dockerfiles/hdp_node/configuration_files/core_hadoop/* /etc/hadoop/conf/
 cp /root/dockerfiles/hdp_node/configuration_files/tez/* /etc/tez/conf/
 cp /root/dockerfiles/hdp_node/configuration_files/hive/* /etc/hive/conf/
