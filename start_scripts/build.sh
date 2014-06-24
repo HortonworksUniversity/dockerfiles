@@ -74,10 +74,12 @@ cp /root/$REPO_DIR/scripts/* /root/scripts/
 cp /root/dockerfiles/hdp_node/configuration_files/core_hadoop/* /etc/hadoop/conf/
 
 #Copy lab files
+echo "Copying lab files..."
 mkdir -p /root/$COURSE_DIR/labs
 cp -r /root/$REPO_DIR/labs/*  /root/$COURSE_DIR/labs/
 
 #Replace /etc/hosts with one that contains the Docker server names
+echo "Updating /etc/hosts..."
 cp /root/scripts/hosts /etc/
 
 
