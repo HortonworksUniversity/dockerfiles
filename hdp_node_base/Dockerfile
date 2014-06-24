@@ -21,7 +21,8 @@ RUN yum -y install java-1.7.0-openjdk java-1.7.0-openjdk-devel \
 ENV JAVA_HOME /usr/java/default
 
 # Configure the HDP Repository
-RUN wget -nv http://public-repo-1.hortonworks.com/HDP/centos6/2.x/GA/2.1.1.0/hdp.repo -O /etc/yum.repos.d/hdp.repo
+# RUN wget -nv http://public-repo-1.hortonworks.com/HDP/centos6/2.x/GA/2.1.1.0/hdp.repo -O /etc/yum.repos.d/hdp.repo
+RUN wget -nv http://public-repo-1.hortonworks.com/HDP/centos6/2.x/GA/2.1-latest/hdp.repo -O /etc/yum.repos.d/hdp.repo 
 
 # Install compression libraries
 RUN yum -y install snappy snappy-devel
