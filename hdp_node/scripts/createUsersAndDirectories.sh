@@ -7,7 +7,7 @@ source /root/scripts/directories.sh
 #useradd $YARN_USER -g $HADOOP_GROUP
 #useradd $MAPRED_USER -g $HADOOP_GROUP
 useradd $PIG_USER -g $HADOOP_GROUP
-#useradd $HIVE_USER -g $HADOOP_GROUP
+useradd $HIVE_USER -g $HADOOP_GROUP
 useradd $WEBHCAT_USER -g $HADOOP_GROUP
 #useradd $HBASE_USER -g $HADOOP_GROUP
 #useradd $ZOOKEEPER_USER -g $HADOOP_GROUP
