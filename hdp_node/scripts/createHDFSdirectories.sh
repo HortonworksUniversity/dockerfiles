@@ -30,7 +30,7 @@ fs -chown -R hdfs:hdfs /tmp;
 fs -chmod -R 777 /tmp;
 fs -mkdir -p /user/hive;
 fs -chown -R hive:hdfs /user/hive;
-fs -mkdir /apps/hive/install
+fs -mkdir -p /apps/hive/install
 fs -copyFromLocal /usr/lib/hive/lib/hive-exec.jar /apps/hive/install/
 fs -chown -R hive:hdfs /apps/hive/install
 
