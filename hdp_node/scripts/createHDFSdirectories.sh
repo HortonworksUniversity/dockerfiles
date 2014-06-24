@@ -30,6 +30,9 @@ fs -chown -R hdfs:hdfs /tmp;
 fs -chmod -R 777 /tmp;
 fs -mkdir -p /user/hive;
 fs -chown -R hive:hdfs /user/hive;
+fs -mkdir /apps/hive/install
+fs -copyFromLocal /usr/lib/hive/lib/hive-exec-* /apps/hive/install/hive-exec-0.13.0.jar
+fs -chown -R hive:hdfs /apps/hive/install
 
 -- Create WebHCat folders
 fs -mkdir -p /user/hcat;
