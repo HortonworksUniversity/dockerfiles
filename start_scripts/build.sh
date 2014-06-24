@@ -72,6 +72,9 @@ cp /root/dockerfiles/start_scripts/* /root/scripts/
 cp /root/$REPO_DIR/scripts/* /root/scripts/
 
 cp /root/dockerfiles/hdp_node/configuration_files/core_hadoop/* /etc/hadoop/conf/
+cp /root/dockerfiles/hdp_node/configuration_files/tez/* /etc/tez/conf/
+cp /root/dockerfiles/hdp_node/configuration_files/hive/* /etc/hive/conf/
+cp /root/dockerfiles/hdp_node/configuration_files/pig/* /etc/pig/conf/
 
 #Copy lab files
 echo "Copying lab files..."
