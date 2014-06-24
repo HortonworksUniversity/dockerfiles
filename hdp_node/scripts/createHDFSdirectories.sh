@@ -31,7 +31,7 @@ fs -chmod -R 777 /tmp;
 fs -mkdir -p /user/hive;
 fs -chown -R hive:hdfs /user/hive;
 fs -mkdir -p /apps/hive/install
-fs -copyFromLocal /usr/lib/hive/lib/hive-exec.jar /apps/hive/install/
+fs -copyFromLocal /usr/lib/hive/lib/hive-exec-0.13.0.2.1.2.0-402.jar /apps/hive/install/
 fs -chown -R hive:hdfs /apps/hive/install
 
 -- Create WebHCat folders
