@@ -24,14 +24,14 @@ fs -chown -R hdfs:hdfs /user/hdfs;
 -- Create Hive folders in HDFS
 fs -mkdir -p /apps/hive/warehouse;
 fs -chown -R hive:hdfs /apps/hive;
-fs -chmod -R 775 /apps/hive;
+fs -chmod -R 777 /apps/hive;
 fs -mkdir -p /tmp/scratch;
 fs -chown -R hdfs:hdfs /tmp;
 fs -chmod -R 777 /tmp;
 fs -mkdir -p /user/hive;
 fs -chown -R hive:hdfs /user/hive;
 fs -mkdir /apps/hive/install
-fs -copyFromLocal /usr/lib/hive/lib/hive-exec-* /apps/hive/install/hive-exec-0.13.0.jar
+fs -copyFromLocal /usr/lib/hive/lib/hive-exec.jar /apps/hive/install/
 fs -chown -R hive:hdfs /apps/hive/install
 
 -- Create WebHCat folders
