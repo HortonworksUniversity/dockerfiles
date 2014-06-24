@@ -79,8 +79,8 @@ mkdir -p /root/$COURSE_DIR/labs
 cp -r /root/$REPO_DIR/labs/*  /root/$COURSE_DIR/labs/
 
 #Replace /etc/hosts with one that contains the Docker server names
-#echo "Updating /etc/hosts..."
-#cp /root/scripts/hosts /etc/
+echo "Updating /etc/hosts..."
+cp /root/scripts/hosts /etc/
 
 
-echo -e "\n*** The lab environment has successfully been built for this classroom VM ***\n"
+echo -e "\n*** Parent build.sh successfully built ***\n"
