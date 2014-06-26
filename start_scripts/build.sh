@@ -6,6 +6,8 @@ then
   exit 1;
 fi
 
+echo "Command line arguments are $1 and $2 and $3..."
+
 SKIP_IMAGES=
 FORCE=
 REBUILD=
