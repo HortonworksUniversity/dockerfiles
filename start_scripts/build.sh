@@ -6,20 +6,20 @@ then
   exit 1;
 fi
 
-echo "Command line arguments are $1 and $2 and $3..."
+echo -e "Command line arguments are $1 and $2 and $3..."
 
 SKIP_IMAGES=
 FORCE=
 REBUILD=
 if [[ $2 == "force" ]]; then
   FORCE=true
-  echo "NOTE: Rebuilding classroom environment, removing any local changes..."
+  echo -e "NOTE: Rebuilding classroom environment, removing any local changes..."
 elif [[ $2 == "skip-images" ]]; then
   SKIP_IMAGES=true
-  echo "NOTE: Skipping Docker image file updates..."
+  echo -e "NOTE: Skipping Docker image file updates..."
 elif [[ ($2 == "rebuild") || ($3 == "rebuild") ]]; then
 	REBUILD=true;
-	echo "NOTE: Rebuilding Data Science Docker images..."
+	echo -e "NOTE: Rebuilding Data Science Docker images..."
 fi
 
 
