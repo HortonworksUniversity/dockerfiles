@@ -8,13 +8,18 @@ fi
 
 SKIP_IMAGES=
 FORCE=
+REBUILD=
 if [[ $2 == "force" ]]; then
   FORCE=true
   echo "NOTE: Rebuilding classroom environment, removing any local changes..."
 elif [[ $2 == "skip-images" ]]; then
   SKIP_IMAGES=true
   echo "NOTE: Skipping Docker image file updates..."
+elif [[ ($2 == "rebuild") || ($3 == "rebuild") ]]; then
+	REBUILD=true;
+	echo "NOTE: Rebuilding Data Science Docker images..."
 fi
+
 
 export REPO_DIR=$1
 #Determine the course directory, which is the first part of the REPO_DIR up until the underscore character
