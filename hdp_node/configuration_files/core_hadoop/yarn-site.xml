@@ -48,7 +48,7 @@
     
     <property>
       <name>yarn.scheduler.minimum-allocation-mb</name>
-      <value>512</value>
+      <value>1</value>
     </property>
     
     <property>
@@ -118,7 +118,7 @@
     
     <property>
       <name>yarn.nodemanager.delete.debug-delay-sec</name>
-      <value>300</value>
+      <value>1800</value>
     </property>
     
     <property>
@@ -235,5 +235,10 @@
       <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
       <value>org.apache.hadoop.mapred.ShuffleHandler</value>
     </property>
-    
+ 
+    <property>
+      <name>yarn.nodemanager.pmem-check-enabled</name>
+      <value>false</value>
+    </property>
+
   </configuration>

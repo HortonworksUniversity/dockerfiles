@@ -75,13 +75,11 @@ mkdir -p $STORM_LOCAL_DIR && chown -R $STORM_USER:$STORM_GROUP $STORM_LOCAL_DIR 
 
 # Copy config files
 cp /root/configuration_files/core_hadoop/* /etc/hadoop/conf/
-cp /root/configuration_files/hbase/* /etc/hbase/conf/
 cp /root/configuration_files/pig/* /etc/pig/conf/
 cp /root/configuration_files/webhcat/* /etc/hcatalog/conf/webhcat/
 cp /root/configuration_files/hive/* /etc/hive/conf/
 cp /root/configuration_files/oozie/* /etc/oozie/conf/
 cp /root/configuration_files/sqoop/* /etc/sqoop/conf/
-cp /root/configuration_files/zookeeper/* /etc/zookeeper/conf/
 cp /root/configuration_files/tez/* /etc/tez/conf
 cp /root/configuration_files/nano/nanorc /root/.nanorc
 
