@@ -24,8 +24,8 @@ ENV JAVA_HOME /usr/java/default
 RUN wget -nv http://public-repo-1.hortonworks.com/HDP/centos6/2.x/2.1-latest/hdp.repo -O /etc/yum.repos.d/hdp.repo 
 
 # Install compression libraries
-RUN yum -y install snappy snappy-devel
-RUN yum -y install lzo lzo-devel hadoop-lzo hadoop-lzo-native
+RUN yum -y install --nogpgcheck snappy snappy-devel
+RUN yum -y install --nogpgcheck lzo lzo-devel hadoop-lzo hadoop-lzo-native
 
 # Install HDP
 RUN yum -y install --nogpgcheck hadoop hadoop-hdfs hadoop-libhdfs hadoop-yarn hadoop-mapreduce hadoop-client openssl
@@ -35,7 +35,7 @@ RUN yum -y install --nogpgcheck pig hive hive-hcatalog webhcat-tar-hive webhcat-
 RUN yum -y install --nogpgcheck zookeeper hbase phoenix
 
 # Install Sqoop
-RUN yum -y install sqoop
+RUN yum -y install --nogpgcheck sqoop
 
 # Install Ganglia client 
 RUN yum -y install --nogpgcheck ganglia-gmond-3.5.0-99 
