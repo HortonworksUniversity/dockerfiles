@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /usr/lib/phoenix/bin
+./sqlline.py namenode:2181:/hbase-unsecure
