@@ -51,19 +51,20 @@ if [ $x == 0 ]; then
         echo -e "\n*** Building hwxu/hdp_node_base image... ***\n"
         docker build -t hwxu/hdp_node_base .
         echo -e "Build of hwxu/hdp_node_base complete!"
+        # Build hwxu/hdp_node
+		echo -e "\n*** Building hwxu/hdp_node ***\n"
+		cd /root/dockerfiles/hdp_node
+		docker build -t hwxu/hdp_node .
+		echo -e "\n*** Build of hwxu/hdp_node complete! ***\n"
+
+		#If this script is execute multiple times, untagged images get left behind
+		#This command removes any untagged Docker images
+		docker rmi -f $(docker images | grep '^<none>' | awk '{print $3}')
+
 else
         echo -e "\n*** hwxu/hdp_node_base image already built ***\n"
 fi
 
-# Build hwxu/hdp_node
-echo -e "\n*** Building hwxu/hdp_node ***\n"
-cd /root/dockerfiles/hdp_node
-docker build -t hwxu/hdp_node .
-echo -e "\n*** Build of hwxu/hdp_node complete! ***\n"
-
-#If this script is execute multiple times, untagged images get left behind
-#This command removes any untagged Docker images
-docker rmi -f $(docker images | grep '^<none>' | awk '{print $3}')
 
 fi
 
