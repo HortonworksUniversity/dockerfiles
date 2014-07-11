@@ -74,11 +74,11 @@ echo "Copying utility scripts..."
 cp /root/dockerfiles/start_scripts/* /root/scripts/
 cp /root/$REPO_DIR/scripts/* /root/scripts/
 
-echo "Copying config files..."
-cp /root/dockerfiles/hdp_node/configuration_files/core_hadoop/* /etc/hadoop/conf/
-cp /root/dockerfiles/hdp_node/configuration_files/tez/* /etc/tez/conf/
-cp /root/dockerfiles/hdp_node/configuration_files/hive/* /etc/hive/conf/
-cp /root/dockerfiles/hdp_node/configuration_files/pig/* /etc/pig/conf/
+#echo "Copying config files..."
+#cp /root/dockerfiles/hdp_node/configuration_files/core_hadoop/* /etc/hadoop/conf/
+#cp /root/dockerfiles/hdp_node/configuration_files/tez/* /etc/tez/conf/
+#cp /root/dockerfiles/hdp_node/configuration_files/hive/* /etc/hive/conf/
+#cp /root/dockerfiles/hdp_node/configuration_files/pig/* /etc/pig/conf/
 
 #Copy lab files
 echo "Copying lab files..."
@@ -86,8 +86,8 @@ mkdir -p /root/$COURSE_DIR/labs
 cp -r /root/$REPO_DIR/labs/*  /root/$COURSE_DIR/labs/
 
 #Replace /etc/hosts with one that contains the Docker server names
-echo "Updating /etc/hosts..."
-cp /root/scripts/hosts /etc/
+#echo "Updating /etc/hosts..."
+#cp /root/scripts/hosts /etc/
 
 
 echo -e "\n*** Parent build.sh successfully built ***\n"
