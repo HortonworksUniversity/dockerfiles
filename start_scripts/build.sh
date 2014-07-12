@@ -85,9 +85,7 @@ echo "Copying lab files..."
 mkdir -p /root/$COURSE_DIR/labs
 cp -r /root/$REPO_DIR/labs/*  /root/$COURSE_DIR/labs/
 
-#Replace /etc/hosts with one that contains the Docker server names
-#echo "Updating /etc/hosts..."
-#cp /root/scripts/hosts /etc/
-
+#Remove any known hosts (to avoid ssh issues)
+rm -rf /root/.ssh/known_hosts
 
 echo -e "\n*** Parent build.sh successfully built ***\n"
