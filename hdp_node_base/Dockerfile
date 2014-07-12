@@ -6,7 +6,7 @@
 #	
 #
 #
-FROM centos:6.4
+FROM centos:centos6
 
 MAINTAINER Rich Raposa, rich@hortonworks.com
 
