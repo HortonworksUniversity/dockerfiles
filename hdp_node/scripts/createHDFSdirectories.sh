@@ -1,5 +1,7 @@
 #!/bin/bash
 
+hdfs dfsadmin -safemode wait
+
 sudo -u hdfs pig <<DONE
 
 fs -mkdir /mapred;

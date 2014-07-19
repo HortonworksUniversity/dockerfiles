@@ -45,8 +45,8 @@ elif [[ ("$NODE_TYPE" == "hiveserver") ]]; then
         echo "Starting Hive and Oozie..."
         export HADOOP_LIBEXEC_DIR=/usr/lib/hadoop/libexec
 
-	# We need at least one DataNode up and running, so the following sleep should take care of this
-	sleep 20
+	# We need at least one DataNode up and running, so the following command should verify this is the case 
+	hdfs dfsadmin -safemode wait
         export hiveserver_ip=$(ip addr | grep inet | grep eth0 | awk -F" " '{print $2}' | sed -e 's/\/.*$//')
 	sudo -E -u hdfs hadoop fs -put -f /usr/lib/tez/* /apps/tez
         sudo -E -u hdfs hadoop fs -put -f /usr/lib/hive/lib/hive-exec.jar /apps/hive/install/
