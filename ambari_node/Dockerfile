@@ -12,7 +12,7 @@ RUN yum -y install nano vim
 RUN yum -y install sudo bind-utils zip
 
 # Configure the Ambari Repository
-RUN wget http://public-repo-1.hortonworks.com/ambari/centos6/1.x/updates/1.6.0/ambari.repo -O /etc/yum.repos.d/ambari.repo
+RUN wget http://public-repo-1.hortonworks.com/ambari/centos6/1.x/updates/1.6.1/ambari.repo -O /etc/yum.repos.d/ambari.repo
 
 RUN ssh-keygen -t rsa -N "" -f /etc/ssh/ssh_host_key \
     && ssh-keygen -t rsa -N "" -f /etc/ssh/ssh_host_rsa_key \
