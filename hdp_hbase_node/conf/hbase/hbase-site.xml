@@ -26,7 +26,7 @@
   </property>
     <property>
     <name>zookeeper.session.timeout</name>
-    <value>60000</value>
+    <value>2147483647</value>
   </property>
     <property>
     <name>hbase.superuser</name>

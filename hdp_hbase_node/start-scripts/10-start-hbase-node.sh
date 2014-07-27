@@ -7,7 +7,7 @@ if [ "$NODE_TYPE" == "namenode" ] ; then
   su -l hdfs -c "hdfs dfsadmin -safemode wait" 
   su -l hdfs -c "hadoop fs -mkdir /apps/hbase"
   su -l hdfs -c "hadoop fs -chown hbase:hadoop /apps/hbase"
-  su -l hbase -c "/usr/lib/hbase/bin/hbase-daemon.sh start master"
+  cat /root/conf/supervisor/hmaster-supervisord.conf >> /etc/supervisord.conf
 elif [ "$NODE_TYPE" == "hiveserver" ] ; then
   yum install -y mysql-server
   chkconfig mysqld on
@@ -20,6 +20,5 @@ elif [ "$NODE_TYPE" == "hiveserver" ] ; then
   echo "grant all on *.* to root@resourcemanager" | mysql -u root
 elif [[ ("$NODE_TYPE" == "workernode") ]]; then
   su -l hdfs -c "hdfs dfsadmin -safemode wait"
-  su -l hbase -c "/usr/lib/hbase/bin/hbase-daemon.sh start regionserver"
+  cat /root/conf/supervisor/hregionserver-supervisord.conf >> /etc/supervisord.conf
 fi
-
