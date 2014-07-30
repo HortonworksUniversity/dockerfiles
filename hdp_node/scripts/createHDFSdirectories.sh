@@ -44,14 +44,16 @@ fs -chmod -R 755 /apps/webhcat;
 
 -- Create Tez folders
 fs -mkdir -p /apps/tez/lib
-fs -copyFromLocal /usr/lib/tez/* /apps/tez
-fs -chmod 755 /apps/tez
-fs -chmod 755 /apps/tez/lib/
-fs -chmod 644 /apps/tez/*.jar
-fs -chmod 644 /apps/tez/lib/*.jar
 
 -- Create Oozie folder
 fs -mkdir /user/oozie
 fs -chown oozie:oozie /user/oozie
 
 DONE
+
+hadoop fs -put /usr/lib/tez/* /apps/tez
+hadoop fs -chmod 755 /apps/tez
+hadoop fs -chmod 755 /apps/tez/lib/
+hadoop fs -chmod 644 /apps/tez/*.jar
+hadoop fs -chmod 644 /apps/tez/lib/*.jar
+
