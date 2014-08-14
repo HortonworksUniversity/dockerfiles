@@ -21,6 +21,8 @@ rm -rf /usr/java/default
 mkdir -p /usr/java/default/bin/
 ln -s /usr/bin/java /usr/java/default/bin/java
 
+echo "alias mysql='mysql -h hiveserver'" >> /etc/bashrc
+
 # Fix a bug in HDP 2
 chown root:hadoop /usr/lib/hadoop-yarn/bin/container-executor
 chmod 6050 /usr/lib/hadoop-yarn/bin/container-executor 
