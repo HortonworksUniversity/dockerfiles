@@ -23,6 +23,9 @@ if [[ ("$NODE_TYPE" == "hive") ]]; then
         # Start WebHCat server
         sudo -E -u hcat /etc/hcatalog/conf/webhcat/webhcat-env.sh && env HADOOP_HOME=/usr/lib/hadoop /usr/lib/hcatalog/sbin/webhcat_server.sh start     
         # Start oozie
+        yum -y install extjs-2.2-1
+        cp /usr/share/HDP-oozie/ext-2.2.zip /usr/lib/oozie/libext/
+	cp /usr/lib/hadoop/lib/hadoop-lzo-*.jar /usr/lib/oozie/libext/
         sudo -E -u oozie /usr/lib/oozie/bin/oozie-setup.sh prepare-war
         sudo -E -u oozie /usr/lib/oozie/bin/ooziedb.sh create -run Validate DB Connection
         sudo -E -u oozie /usr/lib/oozie/bin/oozie-setup.sh sharelib create -fs hdfs://namenode:8020
