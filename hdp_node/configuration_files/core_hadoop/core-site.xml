@@ -21,6 +21,10 @@
     <value>*</value>
   </property>
     <property>
+    <name>hadoop.proxyuser.root.hosts</name>
+    <value>*</value>
+  </property>
+    <property>
     <name>fs.checkpoint.edits.dir</name>
     <value>file:///hadoop/hdfs/namesecondary</value>
   </property>
