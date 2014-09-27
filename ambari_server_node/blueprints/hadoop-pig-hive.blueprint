@@ -1,0 +1,91 @@
+{
+    "configurations" : [
+        {
+            "global" : {
+                "nagios_contact" : "admin@localhost"
+            }
+        }
+    ],
+    "host_groups" : [
+        {
+            "name" : "master",
+            "components" : [
+                {
+                    "name" : "PIG"
+                },
+                {
+                    "name" : "HISTORYSERVER"
+                },
+                {
+                    "name" : "NAMENODE"
+                },
+                {
+                    "name" : "HCAT"
+                },
+                {
+                    "name" : "AMBARI_SERVER"
+                },
+                {
+                    "name" : "APP_TIMELINE_SERVER"
+                },
+                {
+                    "name" : "HDFS_CLIENT"
+                },
+                {
+                    "name" : "HIVE_CLIENT"
+                },
+                {
+                    "name" : "NODEMANAGER"
+                },
+                {
+                    "name" : "DATANODE"
+                },
+                {
+                    "name" : "WEBHCAT_SERVER"
+                },
+                {
+                    "name" : "RESOURCEMANAGER"
+                },
+                {
+                    "name" : "HIVE_SERVER"
+                },
+                {
+                    "name" : "NAGIOS_SERVER"
+                },
+                {
+                    "name" : "SECONDARY_NAMENODE"
+                },
+                {
+                    "name" : "TEZ_CLIENT"
+                },
+                {
+                    "name" : "HIVE_METASTORE"
+                },
+                {
+                    "name" : "GANGLIA_SERVER"
+                },
+                {
+                    "name" : "SQOOP"
+                },
+                {
+                    "name" : "YARN_CLIENT"
+                },
+                {
+                    "name" : "MAPREDUCE2_CLIENT"
+                },
+                {
+                    "name" : "MYSQL_SERVER"
+                },
+                {
+                    "name" : "GANGLIA_MONITOR"
+                }
+            ],
+            "cardinality" : "1"
+        }
+    ],
+    "Blueprints" : {
+        "blueprint_name" : "hadoop-pig-hive",
+        "stack_name" : "HDP",
+        "stack_version" : "2.1"
+    }
+}
