@@ -1,7 +1,7 @@
 {
     "configurations" : [
         {
-            "global" : {
+            "nagios-env" : {
                 "nagios_contact" : "admin@localhost"
             }
         }
@@ -123,9 +123,6 @@
                 },
                 {
                     "name" : "STORM_UI_SERVER"
-                },
-                {
-                    "name" : "STORM_REST_API"
                 }
             ],
             "cardinality" : "1"
@@ -266,6 +263,6 @@
     "Blueprints" : {
         "blueprint_name" : "multinode",
         "stack_name" : "HDP",
-        "stack_version" : "2.1"
+        "stack_version" : "2.2"
     }
 }

@@ -1,7 +1,7 @@
 {
     "configurations" : [
         {
-            "global" : {
+            "nagios-env" : {
                 "nagios_contact" : "admin@localhost"
             }
         }
@@ -86,6 +86,6 @@
     "Blueprints" : {
         "blueprint_name" : "hadoop-pig-hive",
         "stack_name" : "HDP",
-        "stack_version" : "2.1"
+        "stack_version" : "2.2"
     }
 }

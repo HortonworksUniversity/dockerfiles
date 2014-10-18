@@ -1,7 +1,7 @@
 {
     "configurations" : [
         {
-            "global" : {
+            "nagios-env" : {
                 "nagios_contact" : "admin@localhost"
             }
         }
@@ -10,9 +10,6 @@
         {
             "name" : "master",
             "components" : [
-                {
-                    "name" : "STORM_REST_API"
-                },
                 {
                     "name" : "PIG"
                 },
@@ -128,6 +125,6 @@
     "Blueprints" : {
         "blueprint_name" : "singlenode",
         "stack_name" : "HDP",
-        "stack_version" : "2.1"
+        "stack_version" : "2.2"
     }
 }
