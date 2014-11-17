@@ -9,6 +9,7 @@ RUN wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.r
 RUN wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
 RUN rpm -Uvh remi-release-6*.rpm epel-release-6*.rpm
 RUN rm -f remi-release-6*.rpm epel-release-6*.rpm
+RUN sed -i 's/https/http/g' /etc/yum.repos.d/epel.repo
 RUN yum -y install supervisor
 
 # Copy over custom scripts and config files
