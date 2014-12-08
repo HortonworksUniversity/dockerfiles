@@ -17,6 +17,9 @@ elif [[ $2 == "skip-images" ]]; then
   echo -e "NOTE: Skipping Docker image file updates..."
 fi
 
+#The repos need updating on the Ubuntu VM
+sed '$d' /etc/apt/sources.list.d/hdp.list
+echo "http://public-repo-1.hortonworks.com/HDP/ubuntu12/2.1.3.0" >> /etc/apt/sources.list.d/hdp.list
 
 export REPO_DIR=$1
 #Determine the course directory, which is the first part of the REPO_DIR up until the underscore character
